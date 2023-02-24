@@ -4,5 +4,6 @@
 4.enviroment information.
 5.Comments and links,
 to bug-reports and
-specification documents.
-и тд
+specification documents
+name tester.
+
