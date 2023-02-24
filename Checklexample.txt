@@ -5,4 +5,8 @@
 5.Comments and links,
 to bug-reports and
 specification documents.
+<<<<<<< HEAD
 name tester.
+=======
+и тд
+>>>>>>> CheckList
