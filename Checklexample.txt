@@ -1,0 +1,7 @@
+1.Test scripts.
+2.Current checkout statuses.
+3.name of project.
+4.enviroment information.
+5.Comments and links,
+to bug-reports and
+specification documents.
