@@ -1,0 +1,12 @@
+ID: 007
+Title: bagreport
+Environment: Windows 10 Pro
+Precondition: url
+Severity: critical
+Priority: medium
+STR:1, 2, 3
+AR:
+ER:
+Attachments:
+Author: Nataliia Zabika
+Data: mm/dd/yy
