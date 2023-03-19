@@ -210,7 +210,66 @@ values (1,1),
          ('Senior Automation QA egineer');
          
        
+     10. Cоздать таблицу roles_employee
+        
+        create table roles_employee(
+        id serial primary key,
+        id_employee int unique not null ,
+        id_role int not null,
+        foreign key(id_employee)
+        references employees(id),
+        foreign key (id_role)
+        references roles2(id));
+
+       11.Наполнить таблицу 40 строками.
        
+       insert into roles_employee (id_employee,id_role)
+       values (1,13),
+              (4,17),
+              (8,15),
+              (55,16),
+              (2,14),
+              (3,1),
+              (5,1),
+              (6,1),
+              (7,2),
+              (9,2),
+              (11,2),
+              (10,3),
+              (13,3),
+              (12,3),
+              (15,13),
+              (14,14),
+              (16,4),
+              (17,4),
+              (18,4),
+              (19,5),
+              (20,5),
+              (21,5),
+              (22,6),
+              (24,6),
+              (23,6),
+              (25,7),
+              (26,7),
+              (30,7),
+              (33,8),
+              (36,8),
+              (39,8),
+              (41,9),
+              (45,9),
+              (44,10),
+              (47,11),
+              (50,11),
+              (54,12),
+              (56,17),
+              (58,18),
+              (60,19),
+              (66,20);
+              
+              
+       
+          select * from roles_employee;
+           
        
       
          
