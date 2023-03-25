@@ -1,0 +1,98 @@
+//  1.Отправить запрос. 
+// 2. Проверить статус : код 200.
+pm.test("Status code is 200",function(){
+    pm.response.to.have.status(200);
+
+});
+// 3.Спарсить respons body в Json.
+ 
+var jsonData=pm.response.json();
+
+
+// // 4. Проверить, что name в ответе равно name s request (name вбить руками.)
+pm.test("Verify name",function(){
+
+pm.expect(jsonData.name).to.eql("Nataliia");
+
+});
+
+//  5. Проверить, что age в ответе равно age s request (age вбить руками.)
+ pm.test("Verify age",function(){
+
+    pm.expect(jsonData.age).to.eql("47");
+});
+
+ //   6. Проверить, что salary в ответе равно salary s request (salary вбить руками.)
+pm.test("Verify salary",function(){
+    pm.expect(jsonData.salary).to.eql(1000)
+})
+
+
+// // 7. Спарсить request.
+
+var req=request.data
+console.log (req)
+
+// // 8. Проверить, что name в ответе равно name s request (name забрать из request.)
+var req = request.data;
+var resp=pm.response.json();
+
+var req_name = req.name;
+var resp_name=resp.name
+
+console.log("Resp_name =" +resp_name);
+console.log("Req_name =" +req_name);
+pm.test("Req_Resp_Name_check", function(){
+    pm.expect(resp_name).to.eql(req_name);
+
+});
+
+// // 9. Проверить, что age в ответе равно age s request (age забрать из request.)
+
+var req = request.data;
+var resp=pm.response.json();
+
+var req_age = req.age;
+var resp_age=resp.age
+
+console.log("Resp_age =" +resp_age);
+console.log("Req_age =" +req_age);
+pm.test("Req_Resp_AGE_check", function(){
+    pm.expect(resp_age).to.eql(req_age);
+
+});
+
+
+// // 10. Проверить, что salary в ответе равно salary s request (salary забрать из request.)
+
+var req = request.data;
+var resp=pm.response.json();
+
+var req_salary = +req.salary;
+var resp_salary=+resp.salary
+
+console.log("Resp_salary =" +resp_salary);
+console.log("Req_salary =" +req_salary);
+pm.test("Req_Resp_SALARY_check", function(){
+    pm.expect(resp_salary).to.eql(req_salary);
+
+});
+// console.log(typeof(resp_salary))
+// console.log(typeof(req_salary))
+// console.log(typeof(resp_age))
+// console.log(typeof(req_age))
+
+// // 11. Вывести в консоль параметр family из response.
+var resp_family = resp.family
+console.log("Resp_family = " , resp_family);
+
+// 12.Проверить что u_salary_1_5_year в ответе равно salary*4(salary забрать из request)
+var resp_u_salary_1_5_year = resp.family.u_salary_1_5_year;
+var req = request.data;
+var req_u_salary_1_5_year = +req.u_salary_1_5_year;
+console.log("Resp_u_salary_1_5_year = " + resp_u_salary_1_5_year);
+pm.test("Req_Resp_SALARY_1_5_year_check", function () {
+    pm.expect(resp_salary*4).to.eql(resp_u_salary_1_5_year);
+});
+
+console.log(typeof(resp_age))
