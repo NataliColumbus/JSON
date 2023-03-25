@@ -1,0 +1,61 @@
+// // 2/ Cтатус код 200.
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+var jsonData=pm.response.json();
+
+// 2) Проверка структуры json в ответе.
+const schema = {
+    "person": {
+        "u_age": 30,
+        "u_name": [
+            "Juliia",
+            2300,
+            30
+        ],
+        "u_salary_1_5_year": 9200
+    },
+    "qa_salary_after_12_months": 6670.0,
+    "qa_salary_after_6_months": 4600,
+    "start_qa_salary": 2300
+}
+pm.test("Validate schema",() => {
+    pm.response.to.have.jsonSchema(schema);
+});
+
+
+// 3) В ответе указаны коэффициенты умножения salary, напишите тесты по проверке правильности результата перемножения на коэффициент.
+
+            // qa_salary_after_1_5_year
+var resp_u_salary_1_5_year=jsonData.person.u_salary_1_5_year
+console.log(resp_u_salary_1_5_year)
+console.log(jsonData)
+pm.test("resp_u_salary_1_5_year"),function(){
+    pm.expect(jsonData.person_u_salary_1_5_year).to.eql(resp.start_qa_salary*4);
+};
+        //    qa_salary_after_12_months
+        var resp_qa_salary_after_12_months=jsonData.qa_salary_after_12_months
+        console.log(resp_qa_salary_after_12_months)
+        pm.test("qa_salary_after_12_months"),function(){
+            pm.expect(jsonData.qa_salary_after_12_months).to.eql(resp.start_qa_salary*2.9);
+        };
+            //  qa_salary_after_6_months
+            var resp_qa_salary_after_6_months=jsonData.qa_salary_after_6_months
+        console.log(resp_qa_salary_after_6_months)
+        pm.test("qa_salary_after_6_months"),function(){
+            pm.expect(jsonData.qa_salary_after_6_months).to.eql(resp.start_qa_salary*2);
+        };
+                //  start_qa_salary
+                var resp_start_qa_salary=jsonData.start_qa_salary
+        console.log(resp_start_qa_salary)
+        pm.test("start_qa_salary"),function(){
+            pm.expect(jsonData.start_qa_salary).to.eql(resp.start_qa_salary);
+        };
+
+        // 4) Достать значение из поля 'u_salary_1.5_year' и передать в поле salary запроса http://162.55.220.72:5005/get_test_user
+        var resp_u_salary_1_5_year=jsonData.person.u_salary_1_5_year
+        console.log(resp_u_salary_1_5_year)
+        console.log(jsonData.person.u_salary_1_5_year)
+        pm.environment.set("resp_u_salary_1.5_year");
